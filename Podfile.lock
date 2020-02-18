@@ -1,20 +1,26 @@
 PODS:
-  - Alamofire (4.9.1)
+  - Alamofire (5.0.0)
   - CDAlertView (0.10.0)
+  - SDWebImage (5.5.2):
+    - SDWebImage/Core (= 5.5.2)
+  - SDWebImage/Core (5.5.2)
 
 DEPENDENCIES:
   - Alamofire
   - CDAlertView
+  - SDWebImage
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - CDAlertView
+    - SDWebImage
 
 SPEC CHECKSUMS:
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Alamofire: 58ff2bfb8daaacaa233d5c36e37b10a5248f59b1
   CDAlertView: ee6a87c90c4283c8d316d55633db1a6981f1cc51
+  SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
 
-PODFILE CHECKSUM: 65f8e253432897bfafc6186ff9d164d336454d1c
+PODFILE CHECKSUM: a41bbff3c707106d78f7a6efc7874f23e888038d
 
 COCOAPODS: 1.8.4

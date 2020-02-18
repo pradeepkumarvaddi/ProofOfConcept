@@ -6,4 +6,5 @@ target 'ProofOfConcept' do
   use_frameworks!
 	      pod 'CDAlertView'
         pod 'Alamofire'
+        pod 'SDWebImage'
 end
