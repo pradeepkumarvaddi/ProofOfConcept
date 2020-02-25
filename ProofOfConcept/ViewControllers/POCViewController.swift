@@ -22,11 +22,9 @@ class POCViewController: UIViewController {
     var session: URLSession!
     var cache:NSCache<AnyObject, AnyObject>!
     
-    struct Cells {
-        static let imageCellIdentifier = "ImageCell"
-    }
-    
     let sharedInstance =  POCAPIContentSingletonHelper.sharedInstance
+    
+    let ESTIMATED_TABLE_ROW_HEIGHT: CGFloat = 400.0
     
     //MARK:ViewController Life cycle methods
     override func viewDidLoad() {
@@ -94,14 +92,14 @@ class POCViewController: UIViewController {
         tableView.dataSource = self
         
         // register cells
-        tableView.register(POCTableViewCell.self, forCellReuseIdentifier: Cells.imageCellIdentifier)
+        tableView.register(POCTableViewCell.self, forCellReuseIdentifier: Constants.imageCellIdentifier)
         
         // set constraints
         tableView.pin(to: tableView)
         
         // set row height
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 400
+        tableView.estimatedRowHeight = ESTIMATED_TABLE_ROW_HEIGHT
     }
 }
 
@@ -114,12 +112,12 @@ extension POCViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cells.imageCellIdentifier) as! POCTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.imageCellIdentifier) as! POCTableViewCell
         
         let contentObject = arrayOfContent[indexPath.row]
         if contentObject.imageHref != nil
         {
-            cell.rowImageView.sd_setImage(with: URL(string: contentObject.imageHref!), placeholderImage: UIImage(named: "placeholder"),options: SDWebImageOptions([]), completed: { image, error, cacheType, imageURL in
+            cell.rowImageView.sd_setImage(with: URL(string: contentObject.imageHref!), placeholderImage: UIImage(named: Constants.placeholder),options: SDWebImageOptions([]), completed: { image, error, cacheType, imageURL in
                 if (error != nil) {
                     print("Error while downloading image: \(error.debugDescription)")
                 }

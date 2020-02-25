@@ -9,12 +9,10 @@
 import Foundation
 
 class Constants {
-    
     static let BASE_URL = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
-    
-    // Internet connection error
     static let INTERNET_CONNECTION_UNAVAILABLE = "Please check your Internet connection and try again later."
-    
     static let ALERT         = "Alert"
     static let OK            = "Okay"
+    static let imageCellIdentifier = "ImageCell"
+    static let placeholder = "placeholder"
 }
