@@ -17,9 +17,10 @@
 		4BB340DD23FBB6320077B8A3 /* POCAPIContentSingletonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB340DC23FBB6320077B8A3 /* POCAPIContentSingletonHelper.swift */; };
 		4BB340E123FBB6440077B8A3 /* POCAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB340DF23FBB6430077B8A3 /* POCAPIManager.swift */; };
 		4BB340E223FBB6440077B8A3 /* NetworkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB340E023FBB6440077B8A3 /* NetworkState.swift */; };
-		4BB340E523FBB64F0077B8A3 /* POCContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB340E423FBB64F0077B8A3 /* POCContentModel.swift */; };
+		4BB340E523FBB64F0077B8A3 /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB340E423FBB64F0077B8A3 /* ContentModel.swift */; };
 		4BB340E823FBB71B0077B8A3 /* POCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB340E723FBB71B0077B8A3 /* POCTableViewCell.swift */; };
 		4E52EFF6C2F2459303711E12 /* Pods_ProofOfConcept.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7866CC26814223AFEAC8274D /* Pods_ProofOfConcept.framework */; };
+		8F3164E3240529770060F6E0 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3164E2240529770060F6E0 /* ContentViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,10 +48,11 @@
 		4BB340DC23FBB6320077B8A3 /* POCAPIContentSingletonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POCAPIContentSingletonHelper.swift; sourceTree = "<group>"; };
 		4BB340DF23FBB6430077B8A3 /* POCAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POCAPIManager.swift; sourceTree = "<group>"; };
 		4BB340E023FBB6440077B8A3 /* NetworkState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkState.swift; sourceTree = "<group>"; };
-		4BB340E423FBB64F0077B8A3 /* POCContentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POCContentModel.swift; sourceTree = "<group>"; };
+		4BB340E423FBB64F0077B8A3 /* ContentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentModel.swift; sourceTree = "<group>"; };
 		4BB340E723FBB71B0077B8A3 /* POCTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POCTableViewCell.swift; sourceTree = "<group>"; };
 		7866CC26814223AFEAC8274D /* Pods_ProofOfConcept.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProofOfConcept.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B46EF48441AF68C2AD10E4C /* Pods-ProofOfConcept.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProofOfConcept.debug.xcconfig"; path = "Target Support Files/Pods-ProofOfConcept/Pods-ProofOfConcept.debug.xcconfig"; sourceTree = "<group>"; };
+		8F3164E2240529770060F6E0 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		A52CD994B18DA2FA7CCB8F19 /* Pods-ProofOfConcept.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProofOfConcept.release.xcconfig"; path = "Target Support Files/Pods-ProofOfConcept/Pods-ProofOfConcept.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,9 +106,10 @@
 		4B5CCEC423F5944B00A9A129 /* ProofOfConcept */ = {
 			isa = PBXGroup;
 			children = (
+				4BB340E323FBB6460077B8A3 /* Model */,
+				8F3164E1240529560060F6E0 /* ViewModel */,
 				4B1F27A723FBCFC9009A8934 /* VIew */,
 				4BB340DE23FBB6370077B8A3 /* API Manager */,
-				4BB340E323FBB6460077B8A3 /* Model */,
 				4BB340E623FBB6510077B8A3 /* ViewControllers */,
 				4BB340DB23FBB6270077B8A3 /* Helper */,
 				4BB340D823FBB6140077B8A3 /* Constants */,
@@ -163,7 +166,7 @@
 		4BB340E323FBB6460077B8A3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4BB340E423FBB64F0077B8A3 /* POCContentModel.swift */,
+				4BB340E423FBB64F0077B8A3 /* ContentModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,6 +186,14 @@
 				7866CC26814223AFEAC8274D /* Pods_ProofOfConcept.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8F3164E1240529560060F6E0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8F3164E2240529770060F6E0 /* ContentViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		A750B037897D1A6BF72B70CF /* Pods */ = {
@@ -342,10 +353,11 @@
 				4B5CCEC623F5944B00A9A129 /* AppDelegate.swift in Sources */,
 				4B5CCEE623F594A900A9A129 /* POCViewController.swift in Sources */,
 				4BB340E823FBB71B0077B8A3 /* POCTableViewCell.swift in Sources */,
+				8F3164E3240529770060F6E0 /* ContentViewModel.swift in Sources */,
 				4BB340D723FBB60B0077B8A3 /* UIView+Ext.swift in Sources */,
 				4BB340DA23FBB6220077B8A3 /* Constants.swift in Sources */,
 				4BB340DD23FBB6320077B8A3 /* POCAPIContentSingletonHelper.swift in Sources */,
-				4BB340E523FBB64F0077B8A3 /* POCContentModel.swift in Sources */,
+				4BB340E523FBB64F0077B8A3 /* ContentModel.swift in Sources */,
 				4BB340E123FBB6440077B8A3 /* POCAPIManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

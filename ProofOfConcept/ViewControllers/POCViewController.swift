@@ -13,7 +13,7 @@ class POCViewController: UIViewController {
     
     var tableView = UITableView()
     
-    var arrayOfContent : [POCContentModel] = []
+    var arrayOfContent : [ContentViewModel] = []
     
     // Image Caching
     var refreshControl: UIRefreshControl!
@@ -23,7 +23,6 @@ class POCViewController: UIViewController {
     var cache:NSCache<AnyObject, AnyObject>!
     
     let sharedInstance =  POCAPIContentSingletonHelper.sharedInstance
-    
     let ESTIMATED_TABLE_ROW_HEIGHT: CGFloat = 400.0
     
     //MARK:ViewController Life cycle methods
@@ -49,8 +48,8 @@ class POCViewController: UIViewController {
     func makeAPICallToGetData(){
         //Network checking
         if NetworkState.isConnected() {
-            POCAPIManager.getDataFrom(url: URL(string:Constants.BASE_URL)!) { (success, rowsData, navTitle) in
-                self.arrayOfContent = rowsData!
+            POCAPIManager.shareInstance.getAllContentData { (success, rowsData, navTitle) in
+                self.arrayOfContent = rowsData?.map({ return ContentViewModel(content: $0) }) ?? []
                 DispatchQueue.main.async {
                     self.navigationItem.title = navTitle
                     self.tableView.reloadData()
@@ -68,11 +67,10 @@ class POCViewController: UIViewController {
     }
     
     @objc func refreshTableView(){
-        //MARK:Network Checking
+        //Network checking
         if NetworkState.isConnected() {
-            POCAPIManager.getDataFrom(url: URL(string: Constants.BASE_URL)!){ (success, rowsData, navTitle) in
-                self.arrayOfContent = rowsData!
-                // Update the UI with new response
+            POCAPIManager.shareInstance.getAllContentData { (success, rowsData, navTitle) in
+                self.arrayOfContent = rowsData?.map({ return ContentViewModel(content: $0) }) ?? []
                 DispatchQueue.main.async {
                     self.navigationItem.title = navTitle
                     self.tableView.reloadData()
@@ -114,10 +112,10 @@ extension POCViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.imageCellIdentifier) as! POCTableViewCell
         
-        let contentObject = arrayOfContent[indexPath.row]
-        if contentObject.imageHref != nil
+        let contentViewModelObject = arrayOfContent[indexPath.row]
+        if contentViewModelObject.imageHref != nil
         {
-            cell.rowImageView.sd_setImage(with: URL(string: contentObject.imageHref!), placeholderImage: UIImage(named: Constants.placeholder),options: SDWebImageOptions([]), completed: { image, error, cacheType, imageURL in
+            cell.rowImageView.sd_setImage(with: URL(string: contentViewModelObject.imageHref!), placeholderImage: UIImage(named: Constants.placeholder),options: SDWebImageOptions([]), completed: { image, error, cacheType, imageURL in
                 if (error != nil) {
                     print("Error while downloading image: \(error.debugDescription)")
                 }
@@ -125,8 +123,8 @@ extension POCViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             cell.rowImageView.image = nil
         }
-        cell.rowTitleLabel.text = contentObject.title
-        cell.rowDescriptionLabel.text = contentObject.description
+        cell.rowTitleLabel.text = contentViewModelObject.title
+        cell.rowDescriptionLabel.text = contentViewModelObject.descriptions
         
         return cell
     }
