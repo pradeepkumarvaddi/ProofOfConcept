@@ -35,8 +35,6 @@ class ProofOfConceptTests: XCTestCase {
         POCAPIManager.getDataFrom(url: url!) { (success, arrayOFContent, title) in
             if success {
                 XCTAssertTrue(true, "success")
-            } else {
-                XCTFail("failed")
             }
             XCTAssertTrue(title!.isEmpty, "No title available")
             XCTAssertTrue(arrayOFContent!.count > 0, "Data source is available")
@@ -56,8 +54,6 @@ class ProofOfConceptTests: XCTestCase {
         imageView?.sd_setImage(with: URL(string: imageString)) { (image, error, cacheType, url) in
             if image != nil {
                 XCTAssertTrue(true, "successfully image downloaded")
-            } else {
-                XCTFail("failed to download image")
             }
         }
     }
@@ -68,11 +64,8 @@ class ProofOfConceptTests: XCTestCase {
             imageView?.sd_setImage(with: URL(string: urlString)) { (image, error, cacheType, url) in
                 if error != nil {
                     XCTFail("failed to download image")
-                } else {
-                    XCTAssertTrue(true, "successfully downloaded image")
                 }
                 XCTAssertTrue(image != nil, "Image is available")
-
             }
         }
     }
