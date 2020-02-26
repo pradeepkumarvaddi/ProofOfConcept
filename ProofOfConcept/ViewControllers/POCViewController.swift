@@ -12,10 +12,8 @@ import SDWebImage
 class POCViewController: UIViewController {
     
     var tableView = UITableView()
-    
+    let ESTIMATED_TABLE_ROW_HEIGHT: CGFloat = 400.0
     var arrayOfContent : [ContentViewModel] = []
-    
-    // Image Caching
     var refreshControl: UIRefreshControl!
     
     var task: URLSessionDownloadTask!
@@ -23,7 +21,6 @@ class POCViewController: UIViewController {
     var cache:NSCache<AnyObject, AnyObject>!
     
     let sharedInstance =  POCAPIContentSingletonHelper.sharedInstance
-    let ESTIMATED_TABLE_ROW_HEIGHT: CGFloat = 400.0
     
     //MARK:ViewController Life cycle methods
     override func viewDidLoad() {
@@ -117,11 +114,14 @@ extension POCViewController: UITableViewDelegate, UITableViewDataSource {
         {
             cell.rowImageView.sd_setImage(with: URL(string: contentViewModelObject.imageHref!), placeholderImage: UIImage(named: Constants.placeholder),options: SDWebImageOptions([]), completed: { image, error, cacheType, imageURL in
                 if (error != nil) {
+                    cell.rowImageView.isHidden = true
                     print("Error while downloading image: \(error.debugDescription)")
+                } else {
+                    cell.rowImageView.isHidden = false
                 }
             })
         } else {
-            cell.rowImageView.image = nil
+            cell.rowImageView.isHidden = true
         }
         cell.rowTitleLabel.text = contentViewModelObject.title
         cell.rowDescriptionLabel.text = contentViewModelObject.descriptions
